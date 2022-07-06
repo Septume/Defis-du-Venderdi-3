@@ -1,0 +1,197 @@
+* {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+input[type="checkbox"] {
+  height: 0;
+  width: 0;
+}
+
+H1 {
+  text-transform: uppercase;
+  padding: 20px;
+}
+
+.text {
+  margin: 10px 200px;
+}
+
+label {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  background-color: yellow;
+  border: solid skyblue 8px;
+}
+
+label::before {
+  content: "";
+  background-color: #001635;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  position: absolute;
+  top: -90%;
+  right: 90%;
+  opacity: 0;
+}
+
+label .nuage1 {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  height: 10px;
+  width: 40px;
+  border-radius: 40%;
+  background-color: rgb(255, 255, 255);
+}
+
+label .nuage2 {
+  position: absolute;
+  bottom: 10px;
+  right: 0;
+  height: 10px;
+  width: 40px;
+  border-radius: 40%;
+  background-color: rgb(255, 255, 255);
+}
+
+#bouton:not(:checked) ~ label div.nuage1 {
+  transform: translateX(150%);
+  animation: 10s infinite linear nuage;
+}
+
+#bouton:not(:checked) ~ label div.nuage2 {
+  transform: translateX(150%);
+  animation: 10s infinite linear nuage;
+}
+
+@keyframes nuage {
+  0% {
+  }
+  100% {
+    transform: translateX(-200%);
+  }
+}
+
+#bouton:checked ~ label div.nuage1 {
+  transform: translateX(150%);
+  animation: 10s infinite linear renuage;
+}
+
+#bouton:checked ~ label div.nuage2 {
+  transform: translateX(150%);
+  animation: 10s infinite linear renuage;
+}
+
+@keyframes renuage {
+  0% {
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.1;
+  }
+  80% {
+    opacity: 0.1;
+  }
+  100% {
+    transform: translateX(-120%);
+    opacity: 0;
+  }
+}
+
+.dark {
+  position: fixed;
+  height: 110vh;
+  width: 110%;
+  background-color: #303133;
+  border-radius: 50px;
+  z-index: -10;
+  transform: translate(-100%, 100%);
+  top: -50px;
+  left: -50px;
+}
+
+#bouton:checked ~ label {
+  background-color: rgb(255, 255, 153);
+  border-color: #001635;
+}
+
+#bouton:checked ~ label::before {
+  animation: 1s go forwards linear;
+}
+@keyframes go {
+  0% {
+  }
+  100% {
+    transform: translate(70%, 70%);
+    opacity: 100%;
+  }
+}
+
+#bouton:not(:checked) ~ label::before {
+  animation: 1s rego forwards linear;
+}
+@keyframes rego {
+  0% {
+    transform: translate(70%, 70%);
+    opacity: 100%;
+  }
+  100% {
+  }
+}
+
+#bouton:checked ~ .text {
+  animation: 1s wash forwards linear;
+}
+@keyframes wash {
+  0% {
+  }
+  50% {
+    color: black;
+  }
+  100% {
+    color: white;
+  }
+}
+
+#bouton:not(:checked) ~ .text {
+  animation: 1s rewash forwards linear;
+}
+@keyframes rewash {
+  0% {
+    color: white;
+  }
+  50% {
+    color: black;
+  }
+  100% {
+    color: black;
+  }
+}
+
+#bouton:checked ~ .dark {
+  animation: 1s voum forwards linear;
+}
+@keyframes voum {
+  0% {
+  }
+  100% {
+    transform: translate(0%, 0%);
+  }
+}
+
+#bouton:not(:checked) ~ .dark {
+  animation: 1s revoum forwards linear;
+}
+@keyframes revoum {
+  0% {
+    transform: translate(0%, 0%);
+  }
+  100% {
+  }
+}
